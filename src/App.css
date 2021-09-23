@@ -1,13 +1,13 @@
-*{
-  margin:0;
+* {
+  margin: 0;
 }
 
-.app{
+.app {
   background-color: #eeebeb;
   height: 100%;
 }
 
-.app__header{
+.app__header {
   position: sticky;
   top: 0;
   background: white;
@@ -25,13 +25,13 @@
   width: 170px;
 }
 
-.searchForm{
+.searchForm {
   position: relative;
   margin: auto;
   /* width: 30%; */
 }
 
-input{
+input {
   width: 160px;
   padding: 6px 20px;
   background: #faf9f9;
@@ -39,13 +39,13 @@ input{
   border-radius: 3%;
 }
 
-.searchBarInput::placeholder{
+.searchBarInput::placeholder {
   text-align: center;
   letter-spacing: 0.04rem;
   font-size: 12px;
 }
 
-.searchIcon{
+.searchIcon {
   position: absolute;
   padding: 2px;
   color: #858080;
@@ -56,38 +56,36 @@ input{
   top: 3px;
 }
 
-
-.modal__headerImage{
+.modal__headerImage {
   width: 150px;
 }
 
-.app__signup{
+.app__signup {
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
 
-.signup_input{
+.signup_input {
   /* margin-top: 20px; */
 }
 
-.signup_input::placeholder{
+.signup_input::placeholder {
   text-align: left !important;
   font-size: 17px !important;
   letter-spacing: 0.1rem;
 }
 
-.signInButton{
+.signInButton {
   right: 10px;
 }
 
-
-.signInLabelImg{
+.signInLabelImg {
   width: 70px;
 }
 
-.signInLabelText{
+.signInLabelText {
   font-size: 11px;
   text-align: justify;
   line-height: 0.7rem;
@@ -95,56 +93,55 @@ input{
   width: 95%;
 }
 
-.signInLabel{
+.signInLabel {
   display: flex;
   align-items: center;
 }
 
-.header_icons{
+.header_icons {
   position: absolute;
   right: 19%;
 }
 
-.header_icon:first-child{
+.header_icon:first-child {
   color: #e41c47;
 }
 
-.header_icon{
+.header_icon {
   margin-right: 10px;
   color: #252222;
 }
 
-.header_icon:hover{
+.header_icon:hover {
   color: #e41c47;
 }
 
-.upload_message{
-    max-width: 581px;
-    background: white;
-    margin: auto;
-    border: 1px solid lightgray;
-    border-radius: 5px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-family: 'Montserrat', sans-serif;
-    /* height: 250px; */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 10px;
-    padding-bottom: 25px;
-    padding-top: 20px;
-
+.upload_message {
+  max-width: 581px;
+  background: white;
+  margin: auto;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: "Montserrat", sans-serif;
+  /* height: 250px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  padding-bottom: 25px;
+  padding-top: 20px;
 }
 
-.upload_message h3{
+.upload_message h3 {
   text-transform: uppercase;
   margin: auto;
   letter-spacing: 0.05rem;
   margin-bottom: 10px;
 }
 
-.upload_message p{
+.upload_message p {
   font-size: 14.4px;
   width: 95%;
   margin: auto;
@@ -152,52 +149,42 @@ input{
   line-height: 1.3rem;
 }
 
-.upload_signInButton{
+.upload_signInButton {
   width: 100px;
   align-self: center;
   top: 8px;
   /* top: 10px; */
 }
 
-
-@media (max-width: 1320px){
-  .header_icons{
+@media (max-width: 1320px) {
+  .header_icons {
     display: none;
   }
 }
 
-
-@media (max-width: 800px){
-  .app__header{
+@media (max-width: 800px) {
+  .app__header {
     padding-right: 10px;
     padding-left: 10px;
   }
 
-  .searchForm{
+  .searchForm {
     display: none;
   }
 
-  .signupButton{
+  .signupButton {
     position: relative;
     /* float: right; */
     left: 28%;
   }
 
-  .signOutButton{
+  .signOutButton {
     left: 55%;
   }
-
 }
 
-@media (max-width: 600px){
-  .upload_message{
-      width: 90%;
+@media (max-width: 600px) {
+  .upload_message {
+    width: 90%;
   }
-
-  
-
-  
 }
-
-
-

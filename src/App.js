@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import "./styles/style.css";
 import Post from "./Post";
 import Story from "./Story";
 import SearchIcon from "@material-ui/icons/Search";
@@ -115,7 +116,7 @@ function App() {
               <img
                 className="modal__headerImage"
                 src="/images/logo.png"
-                alt="instagram"
+                alt="Eclectic"
               />
             </center>
             <Input
@@ -219,11 +220,13 @@ function App() {
       </Modal>
 
       <div className="app__header">
-        <img
-          className="app__headerImage"
-          src="/images/logo.png"
-          alt="instagram"
-        />
+        <div className="logo-wrap">
+          <img
+            className="app__headerImage"
+            src="/images/logo.png"
+            alt="instagram"
+          />
+        </div>
 
         <div className="searchForm">
           <form>
