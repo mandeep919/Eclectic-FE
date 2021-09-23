@@ -53,7 +53,6 @@ function App() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -82,6 +81,7 @@ function App() {
         }))
       );
     });
+    console.log("usercheck", user);
   }, []);
 
   const signUp = (event) => {
@@ -90,6 +90,7 @@ function App() {
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((authUser) => {
+        alert("signed in with email:", email, " and username:", username);
         return authUser.user.updateProfile({
           displayName: username,
         });
@@ -103,7 +104,6 @@ function App() {
     auth
       .signInWithEmailAndPassword(email, password)
       .catch((error) => alert(error.message));
-
     setOpenSignIn(false);
   };
 
@@ -292,19 +292,24 @@ function App() {
         <div className="upload_message">
           <h3>Login to Create a Post 🚀 !!!</h3>
           <p>
-            <b>Welcome to Instagram Clone App!</b> To Create a new Post, the
-            user has to sign up for the apllication first using any mail ID
-            (Works with an Invalid Mail ID too). For example : "xyz@gmail.com".
-            User can Sign-In using the same credentials again and again. <br />
+            <b>For Creating a Post</b> you need to sign-in first. If not Signed
+            Up, you can register yourself
+            <a href="/signup">
+              <u>here</u>
+            </a>
+            . Then click the "UPLOAD PHOTO" Button. Select a Photo from your
+            device, add a suitable caption to the Post, and then click "CREATE
+            POST" Button. Wait till the photo gets uploaded. And then BOOM!!!
+            Your Post has been created(Scroll a bit if you don't find your post
+            at the top).
             <br />
-            <b>For Creating a Post</b> you need to sign-in first. Then click the
-            "UPLOAD PHOTO" Button. Select a Photo from your device, add a
-            suitable caption to the Post, and then click "CREATE POST" Button.
-            Wait till the photo gets uploaded. And then BOOM!!! Your Post has
-            been created(Scroll a bit if you don't find your post at the top).
-            <br />
-            <br />
-            <b>Hope you have a Great time exploring the Application 💖 !!!</b>
+            <b>
+              Hope you have a Great time exploring the Application
+              <span role="img" aria-label="img">
+                💖✌
+              </span>
+              !!!
+            </b>
           </p>
           <Button
             onClick={() => setOpenSignIn(true)}
