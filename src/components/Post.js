@@ -6,7 +6,7 @@ import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 
 import ModeCommentOutlinedIcon from "@material-ui/icons/ModeCommentOutlined";
 import NearMeOutlinedIcon from "@material-ui/icons/NearMeOutlined";
-import { db } from "./firebase";
+import { db } from "../firebase";
 
 import TurnedInNotOutlinedIcon from "@material-ui/icons/TurnedInNotOutlined";
 
@@ -49,24 +49,19 @@ function Post({ username, caption, imageUrl, postId, user }) {
 
   const avatars = [
     {
-      ava:
-        "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      ava: "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     },
     {
-      ava:
-        "https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+      ava: "https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
     },
     {
-      ava:
-        "https://meetanentrepreneur.lu/wp-content/uploads/2019/08/profil-linkedin.jpg",
+      ava: "https://meetanentrepreneur.lu/wp-content/uploads/2019/08/profil-linkedin.jpg",
     },
     {
-      ava:
-        "https://i.pinimg.com/originals/76/80/4f/76804f67ba38f85e4802d250e5b15504.jpg",
+      ava: "https://i.pinimg.com/originals/76/80/4f/76804f67ba38f85e4802d250e5b15504.jpg",
     },
     {
-      ava:
-        "https://i.pinimg.com/originals/34/f2/50/34f250635ed02218356595ea6d730518.jpg",
+      ava: "https://i.pinimg.com/originals/34/f2/50/34f250635ed02218356595ea6d730518.jpg",
     },
   ];
 

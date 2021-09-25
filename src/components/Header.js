@@ -1,29 +1,93 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Layout from "./Layout/Layout";
-import Home from "./pages/Home";
-import SearchResults from "./pages/SearchResults";
-import "./App.css";
-import "./styles/style.css";
+import React, { useState, useEffect } from "react";
+import SearchIcon from "@material-ui/icons/Search";
+import { auth } from "../firebase";
+import Modal from "@material-ui/core/Modal";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+import { Input } from "@material-ui/core";
 
-function App() {
-  return (
-    <div className="App">
-      <Router>
-        <Layout>
-          <Switch>
-            <Route path="/" component={Home} exact />
-            <Route path="/search-results" component={SearchResults} exact />
-          </Switch>
-        </Layout>
-      </Router>
-    </div>
-  );
+import HomeIcon from "@material-ui/icons/Home";
+import NearMeOutlinedIcon from "@material-ui/icons/NearMeOutlined";
+import ExploreOutlinedIcon from "@material-ui/icons/ExploreOutlined";
+import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
+
+function getModalStyle() {
+  const top = 50;
+  const left = 50;
+
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`,
+  };
 }
 
-export default App;
-{
-  /*       
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    position: "absolute",
+    width: 280,
+    height: 360,
+    backgroundColor: theme.palette.background.paper,
+    border: "1px solid #000",
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+  },
+}));
+
+function Header() {
+  const classes = useStyles();
+  const [modalStyle] = useState(getModalStyle);
+  const [openSignIn, setOpenSignIn] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        // user has logged in...
+        console.log(authUser);
+        setUser(authUser);
+      } else {
+        // user has logged out...
+        setUser(null);
+      }
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, [user, username]);
+
+  useEffect(() => {}, []);
+
+  const signUp = (event) => {
+    event.preventDefault();
+    // auth
+    //   .createUserWithEmailAndPassword(email, password)
+    //   .then((authUser) => {
+    //     alert("signed in with email:", email, " and username:", username);
+    //     return authUser.user.updateProfile({
+    //       displayName: username,
+    //     });
+    //   })
+    //   .catch((error) => alert(error.message));
+  };
+
+  const signIn = (event) => {
+    event.preventDefault();
+
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .catch((error) => alert(error.message));
+    setOpenSignIn(false);
+  };
+
+  return (
+    <div className="App">
       <Modal open={open} onClose={() => setOpen(false)}>
         <div style={modalStyle} className={classes.paper}>
           <form className="app__signup">
@@ -81,7 +145,6 @@ export default App;
           </form>
         </div>
       </Modal>
-
       <Modal open={openSignIn} onClose={() => setOpenSignIn(false)}>
         <div style={modalStyle} className={classes.paper}>
           <form className="app__signup">
@@ -133,7 +196,6 @@ export default App;
           </form>
         </div>
       </Modal>
-
       <div className="app__header">
         <div className="logo-wrap">
           <img
@@ -194,59 +256,7 @@ export default App;
           )}
         </div>
       </div>
-
-      <InstaEmbed />
-
-      <Suggested />
-
-      <Story />
-
-      {user?.displayName ? (
-        <ImageUpload username={user.displayName} />
-      ) : (
-        <div className="upload_message">
-          <h3>Login to Create a Post 🚀 !!!</h3>
-          <p>
-            <b>For Creating a Post</b> you need to sign-in first. If not Signed
-            Up, you can register yourself
-            <a href="/signup">
-              <u>here</u>
-            </a>
-            . Then click the "UPLOAD PHOTO" Button. Select a Photo from your
-            device, add a suitable caption to the Post, and then click "CREATE
-            POST" Button. Wait till the photo gets uploaded. And then BOOM!!!
-            Your Post has been created(Scroll a bit if you don't find your post
-            at the top).
-            <br />
-            <b>
-              Hope you have a Great time exploring the Application
-              <span role="img" aria-label="img">
-                💖✌
-              </span>
-              !!!
-            </b>
-          </p>
-          <Button
-            onClick={() => setOpenSignIn(true)}
-            className="upload_signInButton"
-            color="secondary"
-            variant="contained"
-          >
-            Sign In
-          </Button>
-        </div>
-      )}
-
-      {posts.map(({ id, post }) => (
-        <Post
-          key={id}
-          postId={id}
-          username={post.username}
-          caption={post.caption}
-          imageUrl={post.imageUrl}
-          avatar={post.avatar}
-          user={user}
-        />
-      ))}
-    </div> */
+    </div>
+  );
 }
+export default Header;

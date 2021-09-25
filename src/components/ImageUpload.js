@@ -67,7 +67,7 @@
 // }
 
 import React, { useState } from "react";
-import { storage, db } from "./firebase";
+import { storage, db } from "../firebase";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import firebase from "firebase";
@@ -85,7 +85,6 @@ const useStyles = makeStyles((theme) => ({
     width: theme.spacing(6),
     height: theme.spacing(6),
   },
-  
 }));
 
 export default function ImageUpload({ username }) {
@@ -155,10 +154,9 @@ export default function ImageUpload({ username }) {
     }
   };
 
-    const classes = useStyles();
+  const classes = useStyles();
 
   const fileInputRef = React.createRef();
-
 
   return (
     <div className="upload">
@@ -167,7 +165,7 @@ export default function ImageUpload({ username }) {
           className="post__avatar"
           alt="subhampreet"
           src="./images/avatar1.jpg"
-          className = {classes.large}
+          className={classes.large}
         />
         <input
           type="text"
@@ -178,22 +176,24 @@ export default function ImageUpload({ username }) {
         />
       </div>
 
-
       <div className="upload_content">
-         <Button 
-         onClick={() => fileInputRef.current.click()} 
-         startIcon={<AddAPhotoIcon /> } 
-         className = {classes.button}
-         color = "primary"
-         variant="contained"
-         >
-             Upload Photo
-         </Button> 
+        <Button
+          onClick={() => fileInputRef.current.click()}
+          startIcon={<AddAPhotoIcon />}
+          className={classes.button}
+          color="primary"
+          variant="contained"
+        >
+          Upload Photo
+        </Button>
         <input type="file" onChange={handleChange} hidden ref={fileInputRef} />
-        
 
-        <Button variant="contained" onClick={handleUpload} color="secondary"          className = {classes.button}
->
+        <Button
+          variant="contained"
+          onClick={handleUpload}
+          color="secondary"
+          className={classes.button}
+        >
           Create Post
         </Button>
       </div>
@@ -201,7 +201,13 @@ export default function ImageUpload({ username }) {
       <br />
 
       <p style={{ color: "red" }}>{error}</p>
-      {progress > 0 ? <center><progress value={progress} max="100" /></center> : ""}
+      {progress > 0 ? (
+        <center>
+          <progress value={progress} max="100" />
+        </center>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
