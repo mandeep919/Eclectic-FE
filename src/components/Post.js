@@ -13,6 +13,10 @@ import TurnedInNotOutlinedIcon from "@material-ui/icons/TurnedInNotOutlined";
 import Button from "@material-ui/core/Button";
 
 import firebase from "firebase";
+import {
+  AddShoppingCartOutlined,
+  AddShoppingCartRounded,
+} from "@material-ui/icons";
 
 function Post({ username, caption, imageUrl, postId, user }) {
   const [comments, SetComments] = useState([]);
@@ -94,13 +98,24 @@ function Post({ username, caption, imageUrl, postId, user }) {
       {/* POST ICONS */}
 
       <div className="likeShare">
-        <FavoriteBorderIcon className="likeShare-item" fontSize="medium" />
-        <ModeCommentOutlinedIcon className="likeShare-item" fontSize="medium" />
-        <NearMeOutlinedIcon className="likeShare-item" fontSize="medium" />
-        <TurnedInNotOutlinedIcon
-          className="likeShare-item-save"
-          fontSize="medium"
-        />
+        <span>
+          <FavoriteBorderIcon className="likeShare-item" fontSize="medium" />
+          <ModeCommentOutlinedIcon
+            className="likeShare-item"
+            fontSize="medium"
+          />
+          <NearMeOutlinedIcon className="likeShare-item" fontSize="medium" />
+        </span>
+        <span>
+          <AddShoppingCartOutlined
+            className="likeShare-item"
+            fontSize="medium"
+          />
+          <TurnedInNotOutlinedIcon
+            className="likeShare-item"
+            fontSize="medium"
+          />
+        </span>
       </div>
 
       {/* username + caption */}

@@ -102,20 +102,40 @@ input {
   position: absolute;
   right: 19%;
 }
-
-.header_icon:first-child {
-  color: #e41c47;
-}
-
-.header_icon {
+.header_icons .header_icon {
+  color: #000 !important;
   margin-right: 10px;
-  color: #252222;
 }
-
-.header_icon:hover {
-  color: #e41c47;
+.header_icons .header_icon:hover {
+  color: #e41c47 !important;
 }
-
+.account-wrap {
+  display: flex;
+}
+.account-wrap .img-wrap {
+  height: 40px;
+  width: 40px;
+  background: #e41c47;
+  border-radius: 50%;
+  line-height: 40px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
+}
+.account-icon-button {
+  padding: 7px !important;
+}
+.account-name {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.account-wrap .img-wrap img {
+  width: 100%;
+}
+.menu-nav .MuiPaper-root {
+  top: 60px !important;
+}
 .upload_message {
   max-width: 581px;
   background: white;
@@ -187,4 +207,160 @@ input {
   .upload_message {
     width: 90%;
   }
+}
+
+/* Cart */
+.cart-modal .cart-inner {
+  width: 400px;
+  height: 570px;
+}
+.cart-head {
+  display: flex;
+  justify-content: space-between;
+}
+.cart-head .count {
+  padding-top: 7px;
+}
+ul.items {
+  list-style: none;
+  padding: 0;
+  overflow-y: scroll;
+  height: 360px;
+  border-bottom: 1px solid #f50057;
+  margin-bottom: 5px;
+}
+.cart-item {
+  display: flex;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  color: #fff;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #c0c0c0;
+}
+li.cart-item .right {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.cart-item-img {
+  width: 100%;
+}
+.cart-item-img img {
+  width: 100%;
+}
+.detail-wrap {
+  display: flex;
+}
+li.cart-item .right .message {
+  margin-bottom: 10px;
+}
+.checkout .promotion {
+  width: 100%;
+}
+.promotion input {
+  width: 120px !important;
+  margin-top: 5px;
+}
+section.checkout {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.promotion button {
+  color: #f50057;
+  background: #fff;
+  border: 1px solid #d6d6d6;
+  padding: 7px 11px;
+  margin-top: 7px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.summary ul {
+  padding: 0;
+  list-style: none;
+  margin-bottom: 5px;
+}
+span.paypic-wrap {
+  width: 70px;
+  margin-right: 5px;
+}
+span.paypic-wrap img {
+  width: 100%;
+}
+.proceed-checkout button:first-child {
+  margin-bottom: 10px;
+}
+
+/* Profile page */
+.user-profile {
+  font-size: 15px;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
+  max-width: 1300px;
+  margin: 30px auto;
+}
+.user-profile .card .card-header .profile_img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin: 10px auto;
+  border: 10px solid #ccc;
+  border-radius: 50%;
+  color: white;
+}
+.update-info {
+  margin-top: 20px;
+}
+.card {
+  border: 1px solid #eee;
+  border-radius: 7px;
+  padding: 15px;
+  margin: 5px;
+}
+.shadow-sm {
+  box-shadow: 2px 2px 3px 0px #00000060;
+}
+.text-center {
+  text-align: center;
+}
+.user-profile .card-header h3 {
+  color: #46494c;
+}
+.mb-0 {
+  margin-bottom: 10px;
+}
+.card-body {
+  margin: 10px;
+}
+.frnd-item {
+  display: flex;
+  margin-bottom: 10px;
+}
+.frnd-image {
+  width: 65px;
+  height: 65px;
+  border-radius: 100%;
+  border: 1px solid #eee;
+  overflow: hidden;
+  margin-right: 10px;
+}
+.frnd-image img {
+  width: 100%;
+}
+.frnds-list {
+  width: 320px;
+  border-right: 1px solid #cacaca;
+  overflow-y: scroll;
+}
+.message-wrap {
+  max-width: 900px;
+  margin: 25px auto 0;
+  padding: 15px;
+  border: 1px solid #eee;
+  display: flex;
+  max-height: 590px;
 }

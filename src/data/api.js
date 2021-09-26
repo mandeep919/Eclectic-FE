@@ -13,8 +13,8 @@ export function login(loginData) {
     method: "post",
     url: `${apiURL}/login`,
     body: {
-      username: loginData.username,
-      password: loginData.password,
+      userName: loginData.userNameL,
+      password: loginData.passwordL,
     },
   };
 
@@ -26,14 +26,13 @@ export function signup(signupData) {
     method: "post",
     url: `${apiURL}/signup`,
     body: {
-      userName: signupData.userName,
-      firstName: signupData.firstName,
-      lastName: signupData.lastName,
-      email: signupData.email,
-      password: signupData.password,
+      userName: signupData.userNameS,
+      firstName: signupData.firstNameS,
+      lastName: signupData.lastNameS,
+      email: signupData.emailS,
+      password: signupData.passwordS,
     },
   };
-
   return makeRequest(request);
 }
 
@@ -41,9 +40,6 @@ export function getProfile(token) {
   const request = {
     method: "get",
     url: `${apiURL}/profile`,
-    headerParams: {
-      authorization: `Bearer ${token}`,
-    },
   };
 
   return makeRequest(request);
@@ -104,6 +100,15 @@ export function getTopPosts() {
   const request = {
     method: "get",
     url: `${apiURL}/posts`,
+  };
+
+  return makeRequest(request);
+}
+
+export function getAllUsers() {
+  const request = {
+    method: "get",
+    url: `${apiURL}/allUsers`,
   };
 
   return makeRequest(request);
