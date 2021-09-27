@@ -114,6 +114,24 @@ export function getAllUsers() {
   return makeRequest(request);
 }
 
+export function getMessages() {
+  const request = {
+    method: "get",
+    url: `${apiURL}/messages`,
+  };
+
+  return makeRequest(request);
+}
+
+export function getNotif() {
+  const request = {
+    method: "get",
+    url: `${apiURL}/notification`,
+  };
+
+  return makeRequest(request);
+}
+
 export function addComment(commentD, token) {
   const request = {
     method: "post",

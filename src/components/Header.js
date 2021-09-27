@@ -4,7 +4,7 @@ import Modal from "@material-ui/core/Modal";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, Input, IconButton, Menu, MenuItem } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import { signup, login, getUser } from "../data/api";
+import { signup, login, getNotif } from "../data/api";
 import Cart from "./Cart";
 import { toast } from "react-toastify";
 import {
@@ -12,6 +12,7 @@ import {
   FavoriteBorderOutlined,
   Home,
   NearMeOutlined,
+  NotificationsActive,
 } from "@material-ui/icons";
 
 import "react-toastify/dist/ReactToastify.css";
@@ -49,6 +50,8 @@ function Header() {
   const [openCart, setOpenCart] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const [initials, setInitials] = useState("");
+  const [notifDrop, setNotifDrop] = useState(false);
+  const [notifData, setNotifData] = useState([]);
 
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem("user")) || null
@@ -132,6 +135,19 @@ function Header() {
       position: toast.POSITION.BOTTOM_RIGHT,
     });
     window.location.href = "/";
+  };
+
+  const dropNotification = (e) => {
+    setNotifDrop(!notifDrop);
+    getNotif()
+      .then((response) => {
+        if (response.success === true) {
+          setNotifData(response.data);
+        }
+      })
+      .catch((err) => {
+        console.log("Notification Error", err);
+      });
   };
 
   return (
@@ -305,9 +321,41 @@ function Header() {
           <span onClick={() => setOpenCart(true)}>
             <ShoppingCart fontSize="large" className="header_icon" />
           </span>
-          <span onClick={() => setOpen(true)}>
+          <span onClick={() => dropNotification(true)}>
             <FavoriteBorderOutlined fontSize="large" className="header_icon" />
           </span>
+          <div className="notification-icon-wrap">
+            <div
+              className={
+                notifDrop ? "notification-box show" : "notification-box"
+              }
+            >
+              <h3 className="notif-head">
+                <b>Notifications</b>
+              </h3>
+              <div className="notif-inner">
+                {notifData &&
+                  notifData.map((notif, index) => {
+                    return (
+                      <>
+                        {notif ? (
+                          <div className="notifscore mb-2" key={index}>
+                            <div className="msg-pp">
+                              <img src={notif.userPP} alt="User pic" />
+                            </div>
+                            <span>
+                              {notif.user} {notif.notifType} {notif.notifText}
+                            </span>
+                          </div>
+                        ) : (
+                          <div key={index}>No notification</div>
+                        )}
+                      </>
+                    );
+                  })}
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="signupButton">
