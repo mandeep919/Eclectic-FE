@@ -132,27 +132,20 @@ export function getNotif() {
   return makeRequest(request);
 }
 
-export function addComment(commentD, token) {
-  const request = {
-    method: "post",
-    url: `${apiURL}/addComment`,
-    body: {
-      question: commentD.questionID,
-      text: commentD.textC,
-      answer: commentD.id,
-    },
-    headerParams: {
-      authorization: `Bearer ${token}`,
-    },
-  };
-  return makeRequest(request);
-}
-
 export function fetchSearchUsers(name) {
   console.log("api hit", name);
   const request = {
     method: "get",
     url: `${apiURL}/searchUser?name=${name}`,
+  };
+
+  return makeRequest(request);
+}
+
+export function fetchSearchPosts(searchText) {
+  const request = {
+    method: "get",
+    url: `${apiURL}/searchPosts?searchText=${searchText}`,
   };
 
   return makeRequest(request);

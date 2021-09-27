@@ -77,7 +77,6 @@ function Home() {
         }))
       );
     });
-    console.log("usercheck", auth);
   }, []);
 
   return (

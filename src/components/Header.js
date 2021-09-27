@@ -52,6 +52,7 @@ function Header() {
   const [initials, setInitials] = useState("");
   const [notifDrop, setNotifDrop] = useState(false);
   const [notifData, setNotifData] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem("user")) || null
@@ -148,6 +149,22 @@ function Header() {
       .catch((err) => {
         console.log("Notification Error", err);
       });
+  };
+
+  const searchPosts = (event) => {
+    if (searchText === "") {
+      return;
+    }
+    if (event.key === "Enter") {
+      window.location.href = `/search-results/${searchText}`;
+    }
+  };
+
+  const searchPostsBtn = () => {
+    if (searchText === "") {
+      return;
+    }
+    window.location.href = `/search-results/${searchText}`;
   };
 
   return (
@@ -301,12 +318,22 @@ function Header() {
 
         <div className="searchForm">
           <form>
-            <SearchIcon className="searchIcon" fontSize="small" />
+            <SearchIcon
+              onClick={() => searchPostsBtn()}
+              className="searchIcon"
+              fontSize="small"
+            />
             <input
               type="text"
               id="filter"
               placeholder="Search"
               className="searchBarInput"
+              onChange={(event) => {
+                setSearchText(event.target.value);
+              }}
+              onKeyDown={(event) => {
+                searchPosts(event);
+              }}
             />
           </form>
         </div>

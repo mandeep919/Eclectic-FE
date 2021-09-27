@@ -15,7 +15,11 @@ function App() {
         <Layout>
           <Switch>
             <Route path="/" component={Home} exact />
-            <Route path="/search-results" component={SearchResults} exact />
+            <Route
+              path="/search-results/:searchText"
+              component={SearchResults}
+              exact
+            />
             <Route path="/messages" component={Messages} exact />
             <Route path="/profile" component={Profile} exact />
           </Switch>

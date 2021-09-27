@@ -52,7 +52,7 @@ input {
   display: flex;
   align-items: center;
   align-self: center;
-  left: 55px;
+  right: 10px;
   top: 3px;
 }
 
