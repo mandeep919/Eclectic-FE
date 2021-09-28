@@ -23,18 +23,11 @@ function Suggested() {
 
   return (
     <div className="suggested">
-
-    
-
-  
       <h4>
         {" "}
         <InstagramIcon className="suggested_icon" /> Suggestions For You
       </h4>
-      <p>
-        Sed ut perspiciatis unde omnis iste natus err sit voluptatem iste
-        natus error sit voluptatem{" "}
-      </p>
+      <p>Follow new artists and other companions to your preference</p>
 
       <div className="footer">
         <Avatar
@@ -118,12 +111,7 @@ function Suggested() {
           <h5>durjoydatta</h5>
         </div>
         <a href="https://www.instagram.com/durjoydatta/">
-          <Button
-            size="small"
-            
-            color="secondary"
-            className="footer_follow"
-          >
+          <Button size="small" color="secondary" className="footer_follow">
             Follow
           </Button>
         </a>
@@ -141,17 +129,11 @@ function Suggested() {
           <h5>cristiano</h5>
         </div>
         <a href="https://www.instagram.com/cristiano/">
-          <Button
-            size="small"
-            
-            color="secondary"
-            className="footer_follow"
-          >
+          <Button size="small" color="secondary" className="footer_follow">
             Follow
           </Button>
         </a>
       </div>
-
 
       <div className="footer">
         <Avatar
@@ -165,29 +147,17 @@ function Suggested() {
           <h5>gameofthrones</h5>
         </div>
         <a href="https://www.instagram.com/gameofthrones/">
-          <Button
-            size="small"
-            
-            color="secondary"
-            className="footer_follow"
-          >
+          <Button size="small" color="secondary" className="footer_follow">
             Follow
           </Button>
         </a>
       </div>
 
       <a href="https://www.instagram.com/">
-          <Button
-            size="small"
-            
-            color="primary"
-            className="footer_follow_main"
-          >
-            See All
-          </Button>
-    </a>
-
-
+        <Button size="small" color="primary" className="footer_follow_main">
+          See All
+        </Button>
+      </a>
     </div>
   );
 }

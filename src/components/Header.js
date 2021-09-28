@@ -241,9 +241,7 @@ function Header() {
                 alt="instagram"
               />
               <p className="signInLabelText">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                Sed ut perspiciatis unde omnis iste natus error ut perspiciatis
-                unde omnis iste natus error{" "}
+                Signup and explore our all features for free
               </p>
             </div>
           </form>
@@ -304,9 +302,7 @@ function Header() {
                 alt="instagram"
               />
               <p className="signInLabelText">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                Sed ut perspiciatis unde omnis iste natus error ut perspiciatis
-                unde omnis iste natus error{" "}
+                Sign in now and start using our web application
               </p>
             </div>
           </form>
