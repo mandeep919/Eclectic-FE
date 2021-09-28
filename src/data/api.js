@@ -1,6 +1,5 @@
 import { makeRequest } from "./request";
 
-// const apiURL = "https://herokuapp.com";
 const apiURL = "http://localhost:4000/api/v1";
 const siteURI = `${window.location.origin}`;
 

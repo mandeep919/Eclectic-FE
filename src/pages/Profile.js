@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { getProfile } from "../data/api";
 import InfoIcon from "@material-ui/icons/Info";
 import { Grid } from "@material-ui/core";
 
@@ -8,25 +7,7 @@ const Profile = () => {
     user: JSON.parse(localStorage.getItem("user")) || null,
   });
 
-  useEffect(() => {
-    // getProfile(this.state.user.token)
-    //   .then((response) => {
-    //     if (response.success === true) {
-    //       this.setState({
-    //         fname: response.data.fname,
-    //         lname: response.data.lname,
-    //         username: response.data.username,
-    //         email: response.data.email,
-    //         profilepic: response.data.profilepic,
-    //         mobile: response.data.mobile,
-    //         address: response.data.address,
-    //       });
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.log("Profile Error", err);
-    //   });
-  });
+  useEffect(() => {});
 
   return (
     <div className="user-profile">
