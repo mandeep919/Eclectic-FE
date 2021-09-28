@@ -491,3 +491,50 @@ input.message_input:focus-visible {
 .story__item h6 {
   text-align: center;
 }
+
+/* Search Results */
+.search-results-item {
+  display: flex;
+  flex-wrap: wrap;
+}
+.post-item {
+  width: 310px;
+  display: flex;
+  height: auto;
+  flex-direction: column;
+  margin-right: 10px;
+  padding-bottom: 10px;
+}
+.item-img img {
+  width: 100%;
+}
+.item-img {
+  width: 100%;
+  height: 246px;
+  overflow: hidden;
+}
+.post-item b {
+  color: #5e5e5e;
+}
+.search-results-header {
+  padding: 29px 0 30px 130px;
+}
+.results-sort {
+  padding-left: 55px;
+}
+.list-sort {
+  margin: 15px 0;
+  width: 255px;
+}
+.list-sort ul {
+  list-style: none;
+}
+.list-sort .allcat li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3px;
+}
+.list-sort .pricesort input {
+  width: 20px;
+  margin-right: 5px;
+}

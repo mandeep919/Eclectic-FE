@@ -2,7 +2,14 @@ import React, { useState, useEffect } from "react";
 import SearchIcon from "@material-ui/icons/Search";
 import Modal from "@material-ui/core/Modal";
 import { makeStyles } from "@material-ui/core/styles";
-import { Button, Input, IconButton, Menu, MenuItem } from "@material-ui/core";
+import {
+  Button,
+  Input,
+  IconButton,
+  Menu,
+  MenuItem,
+  Avatar,
+} from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { signup, login, getNotif } from "../data/api";
 import Cart from "./Cart";
@@ -12,7 +19,6 @@ import {
   FavoriteBorderOutlined,
   Home,
   NearMeOutlined,
-  NotificationsActive,
 } from "@material-ui/icons";
 
 import "react-toastify/dist/ReactToastify.css";
@@ -155,7 +161,8 @@ function Header() {
     if (searchText === "") {
       return;
     }
-    if (event.key === "Enter") {
+    if (event.keyCode === 13) {
+      event.preventDefault();
       window.location.href = `/search-results/${searchText}`;
     }
   };
@@ -331,9 +338,7 @@ function Header() {
               onChange={(event) => {
                 setSearchText(event.target.value);
               }}
-              onKeyDown={(event) => {
-                searchPosts(event);
-              }}
+              onKeyDown={searchPosts}
             />
           </form>
         </div>
@@ -414,8 +419,13 @@ function Header() {
                   onClick={handleClick}
                 >
                   <div className="img-wrap">
-                    {user.userpp ? (
-                      <img src={user.userpp} alt="" />
+                    {user ? (
+                      <Avatar
+                        className="post__avatar"
+                        alt="subhampreet"
+                        src={user.userPP}
+                        className={classes.large}
+                      />
                     ) : (
                       <span className="initials-wrap">{initials}</span>
                     )}

@@ -87,7 +87,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ImageUpload({ username }) {
+export default function ImageUpload({ username, user }) {
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState("");
   const [progress, setProgress] = useState(0);
@@ -164,7 +164,7 @@ export default function ImageUpload({ username }) {
         <Avatar
           className="post__avatar"
           alt="subhampreet"
-          src="./images/avatar1.jpg"
+          src={user.userPP}
           className={classes.large}
         />
         <input

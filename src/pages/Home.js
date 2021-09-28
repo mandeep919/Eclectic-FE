@@ -1,20 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Post from "../components/Post";
 import Story from "../components/Story";
-import SearchIcon from "@material-ui/icons/Search";
-import { auth, db } from "../firebase";
-import Modal from "@material-ui/core/Modal";
+import { db } from "../firebase";
 import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
-import { Input } from "@material-ui/core";
+import { Button, Grid } from "@material-ui/core";
 
 import InstaEmbed from "../components/InstaEmbed";
 import Suggested from "../components/Suggested";
-
-import HomeIcon from "@material-ui/icons/Home";
-import NearMeOutlinedIcon from "@material-ui/icons/NearMeOutlined";
-import ExploreOutlinedIcon from "@material-ui/icons/ExploreOutlined";
-import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
 
 import ImageUpload from "../components/ImageUpload";
 
@@ -42,31 +34,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Home() {
-  const classes = useStyles();
-  const [modalStyle] = useState(getModalStyle);
   const [openSignIn, setOpenSignIn] = useState(false);
   const [posts, setPosts] = useState([]);
-  const [open, setOpen] = useState(false);
-
   const [username, setUsername] = useState("");
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem("user")) || null
+  );
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((authUser) => {
-      if (authUser) {
-        // user has logged in...
-        console.log(authUser);
-        setUser(authUser);
-      } else {
-        // user has logged out...
-        setUser(null);
-      }
-    });
-
-    return () => {
-      unsubscribe();
-    };
-  }, [user, username]);
+  useEffect(() => {}, [user]);
 
   useEffect(() => {
     db.collection("posts").onSnapshot((snapshot) => {
@@ -81,55 +56,64 @@ function Home() {
 
   return (
     <div className="App">
-      <InstaEmbed />
-      <Suggested />
-      <Story />
-      {user?.displayName ? (
-        <ImageUpload username={user.displayName} />
-      ) : (
-        <div className="upload_message">
-          <h3>Login to Create a Post 🚀 !!!</h3>
-          <p>
-            <b>For Creating a Post</b> you need to sign-in first. If not Signed
-            Up, you can register yourself
-            <a href="/signup">
-              <u>here</u>
-            </a>
-            . Then click the "UPLOAD PHOTO" Button. Select a Photo from your
-            device, add a suitable caption to the Post, and then click "CREATE
-            POST" Button. Wait till the photo gets uploaded. And then BOOM!!!
-            Your Post has been created(Scroll a bit if you don't find your post
-            at the top).
-            <br />
-            <b>
-              Hope you have a Great time exploring the Application
-              <span role="img" aria-label="img">
-                💖✌
-              </span>
-              !!!
-            </b>
-          </p>
-          <Button
-            onClick={() => setOpenSignIn(true)}
-            className="upload_signInButton"
-            color="secondary"
-            variant="contained"
-          >
-            Sign In
-          </Button>
-        </div>
-      )}
-      {posts.map(({ id, post }) => (
-        <Post
-          key={id}
-          postId={id}
-          username={post.username}
-          caption={post.caption}
-          imageUrl={post.imageUrl}
-          avatar={post.avatar}
-          user={user}
-        />
-      ))}
+      <Grid container>
+        <Grid item xs={3}>
+          <InstaEmbed />
+        </Grid>
+        <Grid item xs={6}>
+          <Story />
+          {user ? (
+            <ImageUpload username={user.displayName} user={user} />
+          ) : (
+            <div className="upload_message">
+              <h3>Login to Create a Post 🚀 !!!</h3>
+              <p>
+                <b>For Creating a Post</b> you need to sign-in first. If not
+                Signed Up, you can register yourself
+                <a href="/signup">
+                  <u>here</u>
+                </a>
+                . Then click the "UPLOAD PHOTO" Button. Select a Photo from your
+                device, add a suitable caption to the Post, and then click
+                "CREATE POST" Button. Wait till the photo gets uploaded. And
+                then BOOM!!! Your Post has been created(Scroll a bit if you
+                don't find your post at the top).
+                <br />
+                <b>
+                  Hope you have a Great time exploring the Application
+                  <span role="img" aria-label="img">
+                    💖✌
+                  </span>
+                  !!!
+                </b>
+              </p>
+              <Button
+                onClick={() => setOpenSignIn(true)}
+                className="upload_signInButton"
+                color="secondary"
+                variant="contained"
+              >
+                Sign In
+              </Button>
+            </div>
+          )}
+          {posts.map(({ id, post }) => (
+            <Post
+              key={id}
+              postId={id}
+              username={post.username}
+              caption={post.caption}
+              imageUrl={post.imageUrl}
+              avatar={post.avatar}
+              user={user}
+            />
+          ))}
+        </Grid>
+
+        <Grid item xs={3}>
+          <Suggested />
+        </Grid>
+      </Grid>
     </div>
   );
 }

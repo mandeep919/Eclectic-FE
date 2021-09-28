@@ -9,8 +9,7 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 5px;
-  left: 2%;
-  position: absolute;
+  margin-left: 30px;
 }
 
 .embed_image {
